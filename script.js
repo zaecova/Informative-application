@@ -12,6 +12,8 @@ const respuestas = [
 
 const knowledge = {
   datos: 'La OMS estima que más de 1 de cada 3 personas se ven afectadas por una condición neurológica, y las afecciones neurológicas son la principal causa de enfermedad y discapacidad en todo el mundo.',
+  metodologia: 'La carga de morbilidad se estimó utilizando los datos del Estudio GBD 2021 junto a la OMS. Se utilizaron métricas como los AVAD (Años de Vida Ajustados por Discapacidad), que calculan de forma combinada los años perdidos por mortalidad prematura y los años vividos con alguna limitación o discapacidad funcional.',
+  fuentes: 'Las fuentes principales provienen del estudio GBD 2021 publicado en la revista científica "The Lancet Neurology (2024)" y del "Global Status Report on Neurology" publicado oficialmente por la Organización Mundial de la Salud (OMS).',
   impacto: 'Las enfermedades neurológicas afectan a personas de todas las edades y regiones. El crecimiento de la población y el envejecimiento incrementan la carga año tras año.',
   accion: 'La OMS recomienda mejorar el acceso a la atención neurológica, fortalecer los sistemas de salud y la capacitación profesional, y promover prevención, detección precoz y rehabilitación.',
   sintomas: 'Los síntomas neurológicos pueden incluir dolor de cabeza, mareos, desmayos, pérdida de consciencia, problemas de memoria, dificultades cognitivas, problemas de habla, problemas de visión, debilidad muscular, entumecimiento, espasmos, temblores, alteraciones del sueño y cambios de humor o comportamiento.',
@@ -30,7 +32,7 @@ const knowledge = {
     'muertes': '11.8 millones',
     'años vividos con discapacidad': '162 millones',
     'años de vida perdidos': '272 millones',
-    'principales causas': 'Ictus, encefalopatía neonatal, migraña, Alzheimer/demencias, neuropatía diabética, meningitis, epilepsia idiopática, complicaciones de parto prematuro, autismo, cánceres del sistema nervioso'
+    'principales causas': 'Ictus, encefalopatía neonatal, migraña, Alzheimer, demencias, neuropatía diabética, meningitis, epilepsia idiopática, complicaciones de parto prematuro, autismo, cánceres del sistema nervioso'
   },
   ageGroupsDetailed: {
     'menores de 5 años': {
@@ -154,7 +156,13 @@ function responderTextoUsuario(texto) {
   }
   if (pregunta.includes('prevalencias') || pregunta.includes('millones') || pregunta.includes('cantidad') || pregunta.includes('incidencia') || pregunta.includes('prevalencia')) {
     return `Prevalencias aproximadas: ${knowledge.prevalencias.join('; ')}.`;
-  }
+    }
+  if (pregunta.includes('metodologia') || pregunta.includes('metodología') || pregunta.includes('cómo se calculó') || pregunta.includes('estimacion')) {
+    return knowledge.metodologia;
+    }
+  if (pregunta.includes('fuente') || pregunta.includes('fuentes') || pregunta.includes('de dónde sale') || pregunta.includes('estudio')) {
+    return knowledge.fuentes;
+    }
   const enfermedadMap = {
     'accidente cerebrovascular': 'Accidente cerebrovascular: 160 millones',
     'encefalopatía neonatal': 'Encefalopatía neonatal: 58,6 millones',
@@ -221,7 +229,7 @@ chatForm.addEventListener('submit', (event) => {
   setTimeout(() => {
     const respuesta = responderTextoUsuario(texto);
     agregarMensaje(respuesta, 'bot');
-  }, 600);
+  }, 500);
 });
 
 const ageBars = document.querySelectorAll('.age-chart .bar');
@@ -255,9 +263,9 @@ function buildRadarChart(items) {
   if (!prevalenceRadarChart || !items.length) return;
 
   const ns = 'http://www.w3.org/2000/svg';
-  const size = 700;
+  const size = 670;
   const center = size / 2;
-  const maxRadius = 230;
+  const maxRadius = 200;
   const levels = 5;
 
   const createSvgNode = (tag, attrs = {}) => {

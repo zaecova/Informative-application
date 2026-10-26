@@ -658,6 +658,8 @@ table tr:hover {
   background: #f8fafc;
 }
 
+
+
 @media (max-width: 640px) {
   .hero {
     padding: 2rem 1rem;
@@ -718,6 +720,56 @@ table tr:hover {
   .radar-legend-item {
     font-size: 0.9rem;
     padding: 0.85rem 0.9rem;
+  }
+  
+  /* Estilos para Metodología y Fuentes */
+  .section-sources {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+  }
+
+  .methodology-card, .sources-card {
+  border-left: 5px solid #2563eb; /* Azul corporativo */
+  background: #ffffff;
+  }
+
+  .sources-card {
+  border-left-color: #f59e0b; /* Naranja/Ámbar de contraste */
+  }
+
+  .section-sources h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  }
+
+  .section-sources p {
+  font-size: 0.95rem;
+  color: #475569;
+  }
+
+  .section-sources ul, .section-sources ol {
+  font-size: 0.9rem;
+  color: #334155;
+  padding-left: 1.2rem;
+  }
+
+  .section-sources li {
+  margin-bottom: 0.6rem;
+  }
+
+  .section-sources a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  }
+
+  .section-sources a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
   }
 }
 
